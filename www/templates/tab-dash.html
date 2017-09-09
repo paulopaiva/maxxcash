@@ -1,0 +1,30 @@
+<ion-view view-title="Status">
+  <ion-content class="padding">
+   
+
+<div class="card" ng-repeat="pega in lista">
+  <div class="item item-divider">
+    {{pega.nome}}
+  </div>
+  <div class="item item-text-wrap">
+    <img ng-src="{{pega.imagem}}" class="image">
+  </div>
+
+</div>
+
+
+<button class="button button-block button-assertive" ng-show="btn">
+  Sem novos resultados
+</button>
+
+
+  <ion-infinite-scroll
+    on-infinite="paginacao()"
+    distance="1%">
+  </ion-infinite-scroll>
+</ion-content>
+
+  </ion-content>
+        <button class="add" ng-click="foto()"><i class="ion-plus-round add"></i>
+   </button>
+</ion-view>

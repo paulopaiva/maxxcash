@@ -1,0 +1,17 @@
+<ion-modal-view >
+  <ion-header-bar class="bar bar-header {{tema}}">
+    <h1 class="title">Vídeos</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeVideo()">Fechar</button>
+    </div>
+  </ion-header-bar>
+    <ion-content padding="true" overflow-scroll="true" align="center">
+     <h5 align="center" style="color:red">{{titulo}}</h5>
+     <div id="myvideo">
+     <video id="Video" controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" poster ="gif/carregando05.gif" class="videoPlayer"><source src="" type="video/mp4"/></video>
+
+       
+  <!--     <a id="playVideos" class="button button-block {{btn_tema}}" ng-click="videoplay()"> ></a>   width="320" height="240"  -->    </div>  
+  </ion-content>
+
+</ion-modal-view>

@@ -1,0 +1,53 @@
+<ion-view view-title="<h6 class='title_bar2'>Notificações</h6>">
+ <ion-content class="padding"  >
+   <ion-refresher
+    pulling-text="Refresh..."
+    on-refresh="pegaNotificacao()">
+  </ion-refresher>
+
+<!--
+    <a class="item item-avatar item-text-wrap" href="#" ng-repeat="pega in lista" ng-click="comentar(pega.idmensagem, pega.comentario, $index)">
+      <img src="{{pega.perfil}}" ng-click="mostraFoto(pega.perfil,pega.nome)">
+      <h2 style="color:black">{{pega.nome}}</h2>
+      <p style="color:darkgray">{{pega.data | date:'medium' }} </p>
+      <p style="color:black">{{pega.comentario}}</p>
+    </a>
+
+
+-->
+
+<ion-list class="list card" ng-repeat="pega in listaNotificacao">
+
+  <a class="item item-avatar item-text-wrap" ng-style="{{pega.status_label}}" ng-click="comentarNotificacao(pega.idmensagem, pega.comentario, $index)">
+  <img class="full-image" src="{{pega.foto}}" ng-show="{{pega.foto}}" ng-click="mostraFoto(pega.foto,pega.descricao)">
+  <img class="full-image" src="images/play-in.png" ng-click="mostraVideo($index)" ng-show="{{pega.video}}">  
+  <p style="color:black">{{pega.curtir}} Curtidas, {{pega.comentario}} Comentários  </p>
+ 
+  <p  ng-style="{{pega.status_label}}" class="item item-icon-right" style="color:red">{{pega.descricao}}
+  <p style="color:red">{{pega.data_hora | date:'medium' }} </p>
+
+<!--
+  <i class="icon ion-checkmark-round"  ng-click="comentar(pega.idmensagem, pega.comentario, $index)"  ></i>
+-->
+  </p>
+  </a>
+
+
+</ion-list>
+
+
+<button class="button button-block button-assertive" ng-show="btn">
+  Sem novos resultados
+</button>
+
+<ion-infinite-scroll
+  
+  distance="1%"                         
+  on-infinite="paginacaoNotificacao()">
+</ion-infinite-scroll>
+
+</ion-content>
+
+
+
+</ion-view>

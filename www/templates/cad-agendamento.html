@@ -1,0 +1,93 @@
+<ion-modal-view >
+    <ion-header-bar class="bar bar-header {{tema}}" >
+    <h1 class="title">Agendamento</h1>
+    <div class="buttons">
+      <button class="button button-clear"  ng-click="closecad_agendamento()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="fundo">
+
+   <div class="list">
+    <div style="color: red">
+      <div ng-show="textoForm.descricao.$invalid && textoForm.descricao.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Por favor preencha a descrição.
+      </div>
+      <div ng-show="textoForm.nome.$invalid && textoForm.nome.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Nome completo...
+      </div>
+      <div ng-show="textoForm.assunto.$invalid && textoForm.assunto.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Qual o assunto?
+      </div>
+      <div ng-show="textoForm.endereco.$invalid && textoForm.endereco.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Por favor preencha o endereço.
+      </div>
+      <div ng-show="textoForm.bairro.$invalid && textoForm.bairro.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Por favor preencha o bairro.
+      </div>
+      <div ng-show="textoForm.cep.$invalid && textoForm.cep.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Por favor preencha o CEP.
+      </div>
+      <div ng-show="textoForm.rg.$invalid && textoForm.rg.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Por favor preencha o RG.
+      </div>
+      <div ng-show="textoForm.telefone.$invalid && textoForm.telefone.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Por favor preencha o Telefone.
+      </div>
+      <div ng-show="textoForm.data_nascimento.$invalid && textoForm.data_nascimento.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Por favor preencha a data de nascimento.
+      </div>
+      <div ng-show="textoForm.indicacao.$invalid && textoForm.indicacao.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Por favor preencha a indicação.
+      </div>
+
+     </div>
+     <form name="textoForm">
+      <label class="item item-input">
+        <input type="text" placeholder="Nome..." ng-minlength="15" ng-model="agendamento.nome" ng-required="true" name="nome" >
+     </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Endereço..." ng-maxlength="255" ng-model="agendamento.endereco" ng-required="true" name="endereco" >
+     </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Bairro..." ng-maxlength="255" ng-model="agendamento.bairro" ng-required="true" name="bairro" >
+     </label>
+     <label class="item item-input">
+        <input type="text" placeholder="Cep..." ng-maxlength="255" ng-model="agendamento.cep" ng-required="true" name="cep" >
+     </label>
+      <label class="item item-input">
+        <input type="text" placeholder="RG..." ng-maxlength="20" ng-model="agendamento.rg" ng-required="true" name="rg" >
+     </label>
+     <label class="item item-input">
+        <input type="tel" placeholder="Telefone de Contato..." ng-maxlength="20" ng-model="agendamento.telefone" ng-required="true" name="telefone" >
+     </label>
+     <label class="item item-input" style="color:gray">Data de Nascimento... <input type="date" placeholder="Data de Nascimento..."  ng-model="agendamento.data_nascimento" ng-required="true" name="data_nascimento" >
+     </label>
+     <label class="item item-input">
+        <input type="text" placeholder="Indicado por:..." ng-maxlength="255" ng-model="agendamento.indicacao" ng-required="true" name="indicacao" >
+     </label>
+
+       <label class="item item-input item-select">
+       <div class="input-label" ><i class="icon ion-help-circled"></i></div>
+
+       <select  ng-model="agendamento.assunto" name="assunto" ng-required="true">
+<!--          <option ng-repeat="pega in listaCategoria" value="{{pega.idcategoria}}">{{pega.none}}</option> -->
+          <option value="">Selecione um assunto</option>
+          <option ng-repeat="pegacategoria in listaCategoria" >{{pegacategoria.nome}}</option>
+
+      </select> 
+      </label>  
+
+      <label class="item item-input">
+        <input type="text" placeholder="Descrição..." ng-maxlength="1000" ng-model="agendamento.descricao" ng-required="true" name="descricao" >
+     </label>
+
+     </form>
+    </div>
+     <div class="button-bar">
+      <a class="button button-block {{btn_tema}} ion-upload" ng-disabled="textoForm.$invalid"  ng-click="enviarAgendamento(agendamento)"> Enviar agora!</a>
+    </div>
+
+    </div>
+    <!-- fim -->
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,88 @@
+<ion-modal-view>
+
+<!--
+    <div class="bar bar-header" ng-class="tema">
+      <div class="buttons">
+      <button class="button icon-left ion-ios-arrow-thin-left button-clear " ng-click="closecad_classificado()"></button>
+    </div>
+	    <p class="title_bar">   Inserir Anúncio</p>
+    </div>
+-->
+  <ion-header-bar  ng-class="tema">
+
+    <button class="button button-clear icon-left ion-ios-arrow-thin-left" ng-click="close_confirma_finalizacao()"></button>
+    <div class="h1 title">Finalizar Anúncio</div>
+  </ion-header-bar>
+
+
+  <ion-content>
+
+
+        <ion-card>
+          <div class="item item-image">
+             <img class="full-image" ng-src="{{classificado.foto}}">
+          </div>
+        </ion-card>
+
+       <div class="card">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label" style="font-size: 18px; font-weight: bold; color:black;">{{classificado.titulo}}</span>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label"  style="color:#8F28AF;">Preço R$</span>
+          <span class="item-label" style="font-size: 18px; font-weight: bold; color:#FF5722;">{{classificado.preco}}</span>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label"  style="color:#8F28AF;">Postado</span>
+          <span class="item-label" style="font-weight: bold; color:black;">{{classificado.data_hora}}</span>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <i class="icon ion-location" style="color:#8F28AF;" ></i>
+          <span class="input-label" style="font-size: 18px; font-weight: bold; color:black;"> {{classificado.bairro}}</span>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label"  style="color:#8F28AF;">Categoria</span>
+          <span class="input-label" style="font-weight: bold; color:black;">Categoria  {{classificado.categoria}}</span>
+        </label>
+
+        <div class="item item-text-wrap">
+          {{classificado.descricao}}
+        </div>
+        <label class="item item-input item-stacked-label">
+           <span class="input-label" style="font-size: 18px; font-weight: bold; color:black;">Qual o Motivo?</span>
+        </label>
+
+
+
+        <form name="Form">
+          <div class="card">
+
+         <div style="color: red">
+           <div ng-show="Form.motivo.$invalid && usuarioForm.motivo.$dirty">
+             <i class="icon ion-alert-circled"></i> Por favor informe o motivo...
+           </div>
+        </div>
+
+        <ion-list name="motivo">
+        <ion-radio  ng-model="classificado.status_finaliza" ng-value="'Vendi pelo Aplicativo'">Vendi pelo Aplicativo</ion-radio>
+        <ion-radio ng-model="classificado.status_finaliza" ng-value="'Vendi por outro'">Vendi por outro</ion-radio>
+        <ion-radio ng-model="classificado.status_finaliza" ng-value="'Desitir de vender'">Desitir de vender</ion-radio>
+        <ion-radio ng-model="classificado.status_finaliza" ng-value="'Outro motivo'">Outro motivo</ion-radio>
+        </ion-list>
+
+        <button class="button button-full button-energized" ng-disabled="Form.$invalid" ng-click="salvarFinalizar()" >
+          <i class="ion-ios-cart"></i> Confirma
+        </button>
+
+       </div>
+      </form>
+  </ion-content>
+
+
+  <!-- botoes de selecao
+   <div ng-include="'opc-botao.html'"></div>
+
+   -->
+
+
+</ion-modal-view>

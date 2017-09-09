@@ -1,0 +1,54 @@
+<ion-view  view-title="<h6 class='title_bar2'>Estabelecimentos</h6>" >
+<ion-content class="padding has-header components-demo" >
+  <ion-refresher
+    pulling-text="Refresh..."
+    on-refresh="pegacashback()">
+  </ion-refresher>
+
+
+  <div class="bar bar-header item-input-inset">
+   <label class="item-input-wrapper">
+     <i class="icon ion-ios-search placeholder-icon"></i>
+     <input type="search" placeholder="Pesquisa" ng-model="criterioDeBusca">
+   </label>
+  </div>
+
+  <div  class="list" ng-repeat="pega in listaCash | filter:criterioDeBusca" cache-view="false">
+
+    <a class="item item-avatar item-icon-left" ng-click="vercashBack($index)">
+      <img src="{{pega.foto}}">
+      <h5>{{pega.titulo}}</h5>
+      <span class="item-note">
+        {{pega.categoria}}
+      </span>
+      <button class="button button-small button-energized" style="width:50px" >
+        {{pega.percentual_cliente}}%
+      </button>
+
+    </a>
+
+
+  </div>
+
+
+  </div>
+
+</div>
+
+<!--
+  <ion-infinite-scroll
+    on-infinite="paginacaoUsuario()"
+    distance="1%">
+  </ion-infinite-scroll>
+-->
+</ion-content>
+    <button fab danger fab-top fab-right>
+      <ion-icon name='mic' is-active="false"></ion-icon>
+    </button>
+
+
+<!--<button ng-click="pegaStatus()"  class="refData"><i class="refData ion-ios-camera"></i></button>
+<button ng-click="cad_classificado()"  class="anuncio"> <i class="ion-ios-camera"></i> Anunciar Agora</button>
+-->
+
+</ion-view>

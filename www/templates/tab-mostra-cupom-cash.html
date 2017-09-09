@@ -1,0 +1,53 @@
+<ion-modal-view>
+
+  <ion-header-bar  ng-class="tema">
+
+    <button class="button button-clear icon-left ion-ios-arrow-thin-left" ng-click="closecashBack()"></button>
+    <div class="h1 title">CashBack</div>
+  </ion-header-bar>
+
+
+  <ion-content>
+
+
+        <ion-card>
+          <div class="item item-image">
+             <img class="full-image" ng-src="{{cashback.foto}}">
+
+          </div>
+        </ion-card>
+
+        <div  class="list" >
+
+          <a class="item item-box " >
+          <!--  <img class="full-image" ng-src="{{cashback.foto}}"> -->
+            <h4>{{cashback.titulo}}</h4>
+            <span class="item-note">
+              {{cashback.categoria}}
+            </span>
+            <button class="button button-small button-energized"  >
+              {{cashback.percentual_cliente}}% de CashBack
+            </button>
+            </br>
+            <span class="item-note" >
+              <button class="button button-small button-positive" ng-click="verlocalizacao('cashback')" >
+                  Localização <i class="icon ion-ios-location"></i>
+              </button>
+            </span>
+
+
+          </a>
+
+        <a class="item item-box item-icon-left item-text-wrap" style="color:#8B8989;" >
+        <!--  <img class="full-image" ng-src="{{cashback.foto}}"> -->
+            <h4>Descrição</h4>
+            <p style="color:#8B8989;">{{cashback.descricao}}</p>
+
+        </a>
+      </div>
+
+
+  </ion-content>
+
+
+</ion-modal-view>

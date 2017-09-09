@@ -1,0 +1,21 @@
+<ion-modal-view >
+  <ion-header-bar class="bar bar-header {{tema}}">
+    <h1 class="title">Dúvidas</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeDuvida()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content align="center" >
+     <ion-list class="listar-item" ng-repeat="pega in listaDuvida" >
+
+       <a class="item item-thumbnail-left item-text-wrap">
+         <img src="{{pega.imagem}}">
+         <h2 style="color:blue">{{pega.titulo}}</h2>
+         <p>{{pega.descricao}}</p>
+       </a>
+
+
+      </ion-list>
+  </ion-content>
+
+</ion-modal-view>

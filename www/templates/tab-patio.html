@@ -1,0 +1,78 @@
+<ion-view  view-title="<h6 class='title_bar2'>Apreensão de Veículo</h6>" >
+<ion-content class="padding has-header components-demo" >
+  <ion-refresher
+    pulling-text="Refresh..."
+    on-refresh="pegaColeta()">
+  </ion-refresher>
+
+
+ <div class="bar bar-header item-input-inset">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="Pesquisa" ng-model="criterioDeBusca">
+  </label>
+</div>
+<div  class="list card" ng-repeat="pega in listaColeta | filter:criterioDeBusca" cache-view="false">
+
+
+  <div class="item item-avatar">
+
+    <p style="color:darkgray">{{pega.data_hora | date:'medium' }} </p>
+
+
+  </div>
+  <div class="item item-body">
+  <!--
+    <h3  style="color:green">QTD: {{pega.qtd_informada | uppercase}}</h3>
+-->
+    <h3 style="color:darkgray"><i  style="color:black"></i>OBS:  {{pega.obs | uppercase}}</h3>
+    <p style="color:black">{{pega.status}}</p>
+
+
+ </div>
+ </div>
+
+<!-- <img class="full-image" src="images/play-in.png" ng-click="mostraVideo($index)" ng-show="{{pega.video}}"> -->
+<!--   <video id="VideoPlay" controls loop ng-show="{{pega.video}}"><source src="{{pega.video}}" type="video/mp4"/></video>
+   <a id="play" class="button button-block {{btn_tema}}" ng-click="videoplay()" ng-show="{{pega.video}}"> Play</a>  -->
+  <h6 style="color:gray"> <i class="icon ion-location placeholder-icon"></i>{{pega.localizacao}}</h6>
+  <h6 style="color:blue" ng-show="{{pega.protocolo}}"> Protocolo: {{pega.protocolo}}</h6>
+ <!--
+  <div class="item item-body">
+
+    <a ng-click="pegaCurtir(pega.idmensagem,pega.curtir)"><label class="social2">{{pega.curtir}} Apoios</label></a>
+    <label class="social2">{{pega.comentario}} Cometários</label>
+    <label class="social2">{{pega.compartilhamento}} Compartilhamentos</label>
+
+
+	  <div class="item item-divider social1" >
+   		<a href="#" class="subdued"  ng-click="curtir(pega.idmensagem,pega.curtir,$index)"><i class="icon ion-ios-body" ng-class="pega.classe_curtir"> Apoiar</i></a>
+
+  		<a href="#" class="subdued"  ng-click="comentar(pega.idmensagem, pega.comentario, $index)" ><i class="icon ion-ios-chatbubble social1" ng-class="pega.classe_comentar"> Comentar</i></a>
+
+      <a href="#"  class="subdued"  ng-click="compartilha(pega.nome,pega.foto,pega.video,pega.descricao,pega.idmensagem,pega.compartilhamento,$index)"><i class="icon ion-android-share-alt social1" ng-class="pega.classe_compartilhar"> Compartilhar</i></a>
+
+
+	  </div>
+    -->
+
+  </div>
+
+</div>
+
+
+  <ion-infinite-scroll
+    on-infinite="paginacaoUsuario()"
+    distance="1%">
+  </ion-infinite-scroll>
+</ion-content>
+    <button fab danger fab-top fab-right>
+      <ion-icon name='mic' is-active="false"></ion-icon>
+    </button>
+
+
+<!--<button ng-click="pegaStatus()"  class="refData"><i class="refData ion-refresh"></i></button>-->
+<button ng-click="menu_patio()"  class="add"><i class="add ion-plus-round"></i></button>
+
+
+</ion-view>

@@ -1,0 +1,100 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "sinesp-nodejs",
+        "scope": null,
+        "escapedName": "sinesp-nodejs",
+        "name": "sinesp-nodejs",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\producao\\sinesp"
+    ]
+  ],
+  "_from": "sinesp-nodejs@latest",
+  "_id": "sinesp-nodejs@1.0.4",
+  "_inCache": true,
+  "_location": "/sinesp-nodejs",
+  "_nodeVersion": "4.2.6",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/sinesp-nodejs-1.0.4.tgz_1498762790535_0.5646416598465294"
+  },
+  "_npmUser": {
+    "name": "bbarreto",
+    "email": "bruno@mamulti.com.br"
+  },
+  "_npmVersion": "3.5.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "sinesp-nodejs",
+    "scope": null,
+    "escapedName": "sinesp-nodejs",
+    "name": "sinesp-nodejs",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/sinesp-nodejs/-/sinesp-nodejs-1.0.4.tgz",
+  "_shasum": "f6a68402fcca2349d5232169c713b5874a1c010c",
+  "_shrinkwrap": null,
+  "_spec": "sinesp-nodejs",
+  "_where": "C:\\producao\\sinesp",
+  "author": {
+    "name": "Bruno Barreto",
+    "email": "bruno@mamulti.com.br",
+    "url": "http://brunobarreto.net"
+  },
+  "bugs": {
+    "url": "https://github.com/bbarreto/sinesp-nodejs/issues"
+  },
+  "dependencies": {
+    "crypto": "0.0.3",
+    "express": "^4.14.0",
+    "request": "^2.61.0",
+    "uuid": "^3.0.1",
+    "xml2js": "^0.4.12"
+  },
+  "description": "API para a consulta de placas de veículos na base de dados do SINESP.",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "f6a68402fcca2349d5232169c713b5874a1c010c",
+    "tarball": "https://registry.npmjs.org/sinesp-nodejs/-/sinesp-nodejs-1.0.4.tgz"
+  },
+  "gitHead": "7c6a923ac4e5754ca6791e103337e5a29a2dc9cc",
+  "homepage": "https://github.com/bbarreto/sinesp-nodejs#readme",
+  "keywords": [
+    "sinesp",
+    "placa",
+    "veículos",
+    "detran"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "bbarreto",
+      "email": "bruno@mamulti.com.br"
+    }
+  ],
+  "name": "sinesp-nodejs",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbarreto/sinesp-nodejs.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "version": "1.0.4"
+}

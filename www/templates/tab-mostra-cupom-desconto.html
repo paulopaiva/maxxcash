@@ -1,0 +1,53 @@
+<ion-modal-view>
+
+  <ion-header-bar  ng-class="tema">
+
+    <button class="button button-clear icon-left ion-ios-arrow-thin-left" ng-click="closeDesconto()"></button>
+    <div class="h1 title">Promoções</div>
+  </ion-header-bar>
+
+
+  <ion-content>
+
+
+        <ion-card>
+          <div class="item item-image">
+             <img class="full-image" ng-src="{{desconto.foto}}">
+
+          </div>
+        </ion-card>
+
+        <div  class="list" >
+
+          <a class="item item-box " >
+          <!--  <img class="full-image" ng-src="{{desconto.foto}}"> -->
+            <h4>{{desconto.titulo}}</h4>
+            <span class="item-note">
+              {{desconto.categoria}}
+            </span>
+
+            <button class="button button-small button-energized"  >
+              {{desconto.valor_desconto}}% de desconto
+            </button>
+            </br>
+            <span class="item-note" >
+              <button class="button button-small button-positive" ng-click="verlocalizacao('desconto')" >
+                  Localização <i class="icon ion-ios-location"></i>
+              </button>
+            </span>
+
+
+          </a>
+
+        <a class="item item-box item-icon-left item-text-wrap" style="color:#8B8989;" >
+        <!--  <img class="full-image" ng-src="{{desconto.foto}}"> -->
+            <h4>Descrição</h4>
+            <p style="color:#8B8989;">{{desconto.descricao}}</p>
+
+        </a>
+      </div>
+
+  </ion-content>
+
+
+</ion-modal-view>

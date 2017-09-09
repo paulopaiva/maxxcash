@@ -1,0 +1,298 @@
+<ion-modal-view>
+  <ion-header-bar  ng-class="tema">
+
+    <div class="buttons">
+      <button class="button icon-left ion-ios-arrow-thin-left button-clear " ng-click="closemenu_msg()"></button>
+    </div>
+	    <p class="title_bar" ng-click="closemenu_msg()">Voltar</p>
+  </ion-header-bar>
+  <ion-content>
+   <!-- msg video  ****************************************************************   -->
+    <div  ng-if="msgVideo" >
+    <div class="list" align="center">
+    <div id="myvideoPopup" align="center">
+    <video controls="controls" style="height: 320px; width: 320px;" preload="metadata" webkit-playsinline="webkit-playsinline" ><source ng-src="{{video}}" type="video/mp4" /></video>'
+    </div>
+   <!--
+     <video controls="controls" ng-model="video" >
+     <source ng-src="{{video}}" type="video/mp4" ng-click="mostraVideo3()" style="height: 250px; width: 150px;"></video>
+
+-->
+     <progress max="100" value="{{currentPercentage}}"></progress>
+    </div>
+   <div class="list">
+    <div style="color: red">
+      <div ng-show="videoForm.videodescricao.$invalid && videoForm.videodescricao.$dirty">
+        <i class="icon ion-alert-circled"></i> Por favor preencha o comentário.
+      </div>
+      <!--
+      <div ng-show="videoForm.videostatus.$invalid && videoForm.videostatus.$dirty">
+        <i class="icon ion-alert-circled"></i> Esta mensgaem é pública ou privada?
+      </div>
+      -->
+      <div ng-show="videoForm.videoassunto.$invalid && videoForm.videoassunto.$dirty">
+        <i class="icon ion-alert-circled"></i> Qual o assunto?
+      </div>
+      <div ng-show="videoForm.videotipo.$invalid && videoForm.videotipo.$dirty">
+        <i class="icon ion-alert-circled"></i> O que deseja informar?.
+      </div>
+    </div>
+
+      <form name="videoForm">
+      <!--
+      <label class="item item-input item-select" >
+        <div class="input-label"><i class="icon ion-android-globe" style="color: blue"></i></div>
+        <select ng-model="msgvideo.status" name="videostatus" ng-required="true">
+         <option value="">Esta mensagem é?</option>
+         <option value="Publica"selected>Pública</option>
+         <option value="Privada">Privada</option>
+        </select>
+      </label>
+       -->
+      <label class="item item-input item-select" >
+        <div class="input-label"><i class="icon ion-help-circled"></i></div>
+        <select ng-model="msgvideo.tipo" name="videotipo"ng-required="true">
+         <option value="">O quê deseja?</option>
+          <option>Informar</option>
+          <option>Sugerir</option>
+          <option>Denunciar</option>
+        </select>
+      </label>
+
+       <label class="item item-input item-select">
+       <div class="input-label" ><i class="icon ion-help-circled"></i></div>
+       <select  ng-model="msgvideo.assunto" name="videoassunto" ng-required="true">
+          <option value="">Selecione um tema</option>
+          <option ng-repeat="pegacategoria in listaCategoria" >{{pegacategoria.nome}}</option>
+      </select>
+      </label>
+
+
+      <label class="item item-input">
+        <input type="text" placeholder="Comentário..." ng-maxlength="1000"  ng-model="msgvideo.descricao" ng-required="true" name="videodescricao" >
+
+     </label>
+     <label class="item item-input">
+        <i class="icon ion-location placeholder-icon" ng-click="pegaLocal()" ></i>
+        <input type="text" ng-click="pegaLocal()" name="videolocalizacao" placeholder="Digite sua localizção ou ckick aqui com gps ativo!" ng-model="msgvideo.localizacao" >
+     </label>
+
+<!--
+        <label class="item item-input">
+          <i class="icon ion-location placeholder-icon" ></i>
+          <input type="text" ng-click="pegaLocal()" name="videolocalizacao" readonly placeholder="Ligue o GPS e Ckick aqui!" ng-model="msgvideo.localizacao" ng-required="true">
+       </label>
+
+
+      </label>
+        <label class="item item-input">
+        <input type="text" placeholder="Endereço ou Ponto de Referência..." name="videoendereco" ng-model="msgvideo.endereco" >
+      </label>
+-->
+     </form>
+    </div>
+
+
+      <div class="button-bar ">
+        <a class="button button-block {{btn_tema}} ion-upload" ng-disabled="videoForm.$invalid"  ng-click="enviarVideo(msgvideo)"> Enviar agora!</a>
+        <a class="button button-block {{btn_tema}} ion-android-camera" ng-click="videoPopup()"> Novo Vídeo</a>
+      </div>
+
+    </div>
+    </div>
+    <!-- fim -->
+
+
+
+    <!-- msg foto  **********************************************************************   -->
+    <div  ng-if="msgFoto" >
+    <div class="list">
+       <img ng-src="{{foto}}" class="foto-perfil" ng-model="msgfoto.foto">
+       <progress max="100" value="{{currentPercentage}}"></progress>
+    </div>
+   <div class="list">
+    <div style="color: red">
+      <div ng-show="fotoForm.fotodescricao.$invalid && fotoForm.fotodescricao.$dirty">
+        <i class="icon ion-alert-circled"></i> Por favor preencha o comentário.
+      </div>
+      <!--
+      <div ng-show="fotoForm.fotostatus.$invalid && fotoForm.fotostatus.$dirty">
+        <i class="icon ion-alert-circled"></i> Esta mensgaem é pública ou privada?
+      </div>
+      -->
+      <div ng-show="fotoForm.fotoassunto.$invalid && fotoForm.fotoassunto.$dirty">
+        <i class="icon ion-alert-circled"></i> Qual o assunto?
+      </div>
+      <div ng-show="fotoForm.fototipo.$invalid && fotoForm.fototipo.$dirty">
+        <i class="icon ion-alert-circled"></i> O que deseja informar?.
+      </div>
+
+     </div>
+     <form name="fotoForm">
+     <!--
+      <label class="item item-input item-select" >
+        <div class="input-label"><i class="icon ion-android-globe" style="color: blue"></i></div>
+        <select ng-model="msgfoto.status" ng-required="true" name="fotostatus">
+         <option value="">Esta mensagem é?</option>
+         <option value="Publica"selected>Pública</option>
+         <option value="Privada">Privada</option>
+        </select>
+      </label>
+      -->
+      <label class="item item-input item-select" >
+        <div class="input-label"><i class="icon ion-help-circled"></i></div>
+        <select ng-model="msgfoto.tipo" name="fototipo"ng-required="true">
+         <option value="">O quê deseja?</option>
+         <option>Informar</option>
+         <option>Sugerir</option>
+         <option>Denunciar</option>
+        </select>
+      </label>
+
+       <label class="item item-input item-select">
+       <div class="input-label" ><i class="icon ion-help-circled"></i></div>
+
+       <select  ng-model="msgfoto.assunto" name="fotoassunto" ng-required="true">
+          <option value="">Selecione um tema</option>
+          <option ng-repeat="pegacategoria in listaCategoria" >{{pegacategoria.nome}}</option>
+      </select>
+      </label>
+
+
+
+      <label class="item item-input">
+        <input type="text" placeholder="Comentário..." ng-maxlength="1000" ng-model="msgfoto.descricao" ng-required="true" name="fotodescricao" >
+
+     </label>
+     <label class="item item-input">
+        <i class="icon ion-location placeholder-icon" ng-click="pegaLocal()" ></i>
+        <input type="text" ng-click="pegaLocal()" name="videolocalizacao" placeholder="Digite sua localizção ou ckick aqui com gps ativo!" ng-model="msgfoto.localizacao" >
+     </label>
+<!--
+        <label class="item item-input">
+          <i class="icon ion-location placeholder-icon" ></i>
+          <input type="text" ng-click="pegaLocal()" name="fotolocalizacao" readonly placeholder="Ligue o GPS e Ckick aqui!" ng-model="msgfoto.localizacao" ng-required="true">
+       </label>
+
+
+      </label>
+        <label class="item item-input">
+        <input type="text" placeholder="Endereço ou Ponto de Referência..." name="endereco" ng-model="msgfoto.endereco" >
+      </label>
+-->
+     </form>
+    </div>
+     <div class="button-bar">
+      <a class="button button-block {{btn_tema}} ion-upload" ng-disabled="fotoForm.$invalid"  ng-click="enviarFoto(msgfoto)"> Enviar agora!</a>
+      <a class="button button-block {{btn_tema}} ion-android-camera" ng-click="cameraPopup()"> Nova Foto</a>
+    </div>
+
+   </div>
+    </div>
+    <!-- fim -->
+
+
+   <!-- msg texto  ***************************************************************     -->
+  <div  ng-if="msgTexto" >
+   <div class="list">
+    <div style="color: red">
+      <div ng-show="textoForm.textodescricao.$invalid && textoForm.textodescricao.$dirty">
+        <i class="icon ion-alert-circled"></i> Por favor preencha o comentário.
+      </div>
+
+      <div ng-show="textoForm.textoendereco.$invalid && textoForm.textoendereco.$dirty">
+        <i class="icon ion-alert-circled"></i> O endereço é obrigatório?
+      </div>
+      <div ng-show="textoForm.textolocalizacao.$invalid && textoForm.textolocalizacao.$dirty">
+        <i class="icon ion-alert-circled"></i> Ative seu GPS (Localização)?
+      </div>
+      <div ng-show="textoForm.textoassunto.$invalid && textoForm.textoassunto.$dirty">
+        <i class="icon ion-alert-circled"></i> Qual o assunto?
+      </div>
+      <div ng-show="textoForm.textotipo.$invalid && textoForm.textotipo.$dirty">
+        <i class="icon ion-alert-circled"></i> O que deseja informar?.
+      </div>
+
+     </div>
+     <form name="textoForm">
+     <!--
+      <label class="item item-input item-select" >
+        <div class="input-label"><i class="icon ion-android-globe" style="color: blue"></i></div>
+        <select ng-model="msgtexto.status" ng-required="true" name="textostatus">
+         <option value="">Esta mensagem é?</option>
+         <option value="Publica"selected>Pública</option>
+         <option value="Privada">Privada</option>
+        </select>
+      </label>
+-->
+      <label class="item item-input item-select" >
+        <div class="input-label"><i class="icon ion-help-circled"></i></div>
+        <select ng-model="msgtexto.tipo" name="textotipo"ng-required="true">
+         <option value="">O quê deseja?</option>
+         <option>Informar</option>
+         <option>Sugerir</option>
+         <option>Denunciar</option>
+       </select>
+      </label>
+
+       <label class="item item-input item-select">
+       <div class="input-label" ><i class="icon ion-help-circled"></i></div>
+
+       <select  ng-model="msgtexto.assunto" name="textoassunto" ng-required="true">
+<!--          <option ng-repeat="pega in listaCategoria" value="{{pega.idcategoria}}">{{pega.none}}</option> -->
+          <option value="">Selecione um tema</option>
+          <option ng-repeat="pegacategoria in listaCategoria" >{{pegacategoria.nome}}</option>
+
+      </select>
+      </label>
+     <!--
+        <hr>
+        <tt>repeatSelect = {{msgtexto.repeatSelect}}</tt><br/>
+     -->
+      <label class="item item-input">
+        <input type="text" placeholder="Comentário..." ng-maxlength="1000" ng-model="msgtexto.descricao" ng-required="true" name="textodescricao" >
+
+     </label>
+     <label class="item item-input">
+        <i class="icon ion-location placeholder-icon"></i>
+        <input type="text"  name="textoendereco" placeholder="Digite o endereço" ng-model="msgtexto.endereco" >
+     </label>
+
+     <label class="item item-input">
+        <i class="icon ion-location placeholder-icon" ng-click="pegaLocal()" ></i>
+        <input type="text" ng-click="pegaLocal()" name="textolocalizacao" placeholder="Click aqui com gps ativo para pegar sua localização!" ng-model="msgtexto.localizacao" >
+     </label>
+
+<!--
+        <label class="item item-input">
+          <i class="icon ion-location placeholder-icon" ></i>
+          <input type="text" ng-click="pegaLocal()" name="textolocalizacao" readonly placeholder="Ligue o GPS e Ckick aqui!" ng-model="msgtexto.localizacao" ng-required="true">
+       </label>
+-->
+     </form>
+    </div>
+     <div class="button-bar">
+      <a class="button button-block {{btn_tema}} ion-upload" ng-disabled="textoForm.$invalid"  ng-click="enviarTexto(msgtexto)"> Enviar agora!</a>
+    </div>
+
+    </div>
+    </div>
+    <!-- fim -->
+
+  </ion-content>
+
+
+  <!-- botoes de selecao
+   <div ng-include="'opc-botao.html'"></div>
+
+   -->
+
+ <div ng-show="btnMsg" align="center">
+
+
+    <button class="video"  ng-click="videoPopup()"> <i class="ion-ios-videocam-outline video"></i></button>
+    <button class="camera" ng-click="cameraPopup()"> <i class="ion-ios-camera-outline camera"></i></button>
+    <button class="texto"  ng-click="carregarTexto()"> <i class="ion-compose texto"></i></button>
+  </div>
+
+</ion-modal-view>

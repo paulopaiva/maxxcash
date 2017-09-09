@@ -1,0 +1,97 @@
+<ion-modal-view>
+
+<!--
+    <div class="bar bar-header" ng-class="tema">
+      <div class="buttons">
+      <button class="button icon-left ion-ios-arrow-thin-left button-clear " ng-click="closecad_classificado()"></button>
+    </div>
+	    <p class="title_bar">   Inserir Anúncio</p>
+    </div>
+-->
+  <ion-header-bar  ng-class="tema">
+
+    <button class="button button-clear icon-left ion-ios-arrow-thin-left" ng-click="closecad_classificado()"></button>
+    <div class="h1 title">Inserir Anúncio</div>
+    <button class="button button-clear " ng-click="limpaAnuncio()">Limpar</button>
+
+
+    </ion-header-bar>
+
+
+  <ion-content>
+
+
+    <ion-card>
+    </ion-card>
+      <img ng-src="{{classificado.foto}}" class="{{classefoto}}" ng-click="cameraPopup()" ng-model="classificado.foto">
+      <progress max="100" value="{{currentPercentage}}"></progress>
+
+
+
+     <form name="Form">
+       <div class="card">
+
+      <div style="color: red">
+        <div ng-show="Form.titulo.$invalid && Form.titulo.$dirty">
+          <i class="icon ion-alert-circled"></i> Título do anúncio com no mínimo 10 letras...
+        </div>
+
+        <div ng-show="Form.descricao.$invalid && Form.descricao.$dirty">
+          <i class="icon ion-alert-circled"></i> Preencha a Descriçao do anúncio...
+        </div>
+        <div ng-show="Form.categoria.$invalid && Form.categoria.$dirty">
+          <i class="icon ion-alert-circled"></i> selecione uma Categoria...
+        </div>
+
+        <div ng-show="Form.preco.$invalid && Form.preco.$dirty">
+          <i class="icon ion-alert-circled"></i> nforme o valor...
+        </div>
+
+
+      </div>
+
+
+
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Título *</span>
+           <input  type="text" placeholder="" name="titulo" ng-model="classificado.titulo" ng-minlength="10" ng-required="true" >
+        </label>
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Descriçao *</span>
+           <input  type="text" placeholder="" name="descricao" ng-model="classificado.descricao" ng-minlength="10" ng-required="true" >
+        </label>
+
+        <div class="item item-divider">
+          <span class="input-label" style="font-size: 15px; font-weight: bold; color:red;">Categoria *</span>
+        </div>
+        <label class="item item-input item-select" >
+          <div class="input-label"><i class="icon ion-help-circled"></i></div>
+          <select  ng-model="classificado.categoria" name="categoria" ng-required="true">
+             <option value="">Selecione a categoria</option>
+             <option ng-repeat="pegacategoria in listaCategoria" >{{pegacategoria.nome}}</option>
+         </select>
+        </label>
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Preço (R$) *</span>
+           <input  type="number"  placeholder="" name="preco" ng-model="classificado.preco"  ng-required="true" >
+        </label>
+
+
+
+       </div>
+       <a class="button button-block {{btn_tema}} ion-forward"  ng-disabled="Form.$invalid"  ng-click="enviarAnuncio(classificado)"> Enviar Agora</a>
+
+     </form>
+
+  </ion-content>
+
+  <!-- botoes de selecao
+   <div ng-include="'opc-botao.html'"></div>
+
+   -->
+
+
+</ion-modal-view>

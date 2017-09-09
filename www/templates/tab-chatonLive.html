@@ -1,0 +1,67 @@
+<ion-modal-view >
+  <ion-header-bar class="bar bar-header {{tema}}">
+    <h1 class="title">Chat on live</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closechatonLive()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content align="center" >
+  
+
+       <label class="item item-input item-select" >
+        <div class="input-label"><i class="icon ion-university"></i></div>
+
+       <select  ng-model="form.curso" name="curso" ng-required="true">
+          <option value="">Selecione um curso</option>
+          <option ng-repeat="pegacurso in listaCurso" value="{{pegacurso.link_chat}}">{{pegacurso.nome}}</option>
+      </select> 
+      </label>
+    <div class="list" align="center">
+      <video id="VideoChat" ng-src="{{form.curso}}" ng-model="form.curso" autobuffer="autobuffer" width="320px" height="240" >
+      </video>      
+       <a id="Connect" class="button button-block {{btn_tema}}" ng-disabled="!form.curso" ng-click="vidChat()">Conectar</a>         
+
+    </div>  
+   <div class="list">
+    <div style="color: red">
+      <div ng-show="textoForm.textodescricao.$invalid && textoForm.textodescricao.$dirty"> 
+   <!--     <i class="icon ion-alert-circled"></i> Por favor preencha a sua mensagem. -->
+      </div>
+      <div ng-show="textoForm.textoassunto.$invalid && textoForm.textoassunto.$dirty"> 
+        <i class="icon ion-alert-circled"></i> Qual o tema?
+      </div>
+
+     </div>
+     <div  ng-show="onChat">
+     <form name="textoForm">
+
+       <label class="item item-input item-select">
+       <div class="input-label" ><i class="icon ion-help-circled"></i></div>
+   <select  ng-model="textoForm.assunto" name="textoassunto" ng-required="true">
+     <option value="">Selecione um tema</option>
+     <option ng-repeat="pegacategoria in listaCategoria" >{{pegacategoria.nome}}</option>
+
+   </select> 
+   </label>  
+
+   <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type = "text" ng-model="msgtexto.descricao" name="textodescricao" placeholder="Escreva aqui..." class="item-input-wrapper" ng-required="true">
+    </label>
+    <button  class="button button-clear button-small" ng-click="gravarChat(msgtexto)" ng-disabled="textoForm.$invalid">
+      <i class="icon ion-checkmark-round" ></i>
+    </button>
+  </div>
+
+
+     </form>
+ </div>    
+    </div>
+
+    </div>
+    <!-- fim -->
+
+
+  </ion-content>
+
+</ion-modal-view>

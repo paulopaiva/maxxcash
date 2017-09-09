@@ -1,0 +1,20 @@
+<ion-modal-view >
+  <ion-header-bar class="bar bar-header {{tema}}">
+    <h1 class="title">...</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeSocial()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content align="center" >
+     <ion-list class="listar-item" ng-repeat="pega in listaSocial" >
+
+      <ion-item menu-close class="listar-item-clear" style="color:blue" ng-href="{{pega.link}}">
+      <i class="{{pega.icone}}" ></i>
+          {{pega.descricao}}
+        </ion-item>
+
+
+      </ion-list>
+  </ion-content>
+
+</ion-modal-view>

@@ -1,0 +1,18 @@
+<ion-modal-view>
+  <ion-header-bar  ng-class="tema">
+    <button class="button button-clear icon-left ion-ios-arrow-thin-left" ng-click="closelocalizacaodesconto()"></button>
+    <div id="titulo" class="h1 title">Localização</div>
+  </ion-header-bar>
+  <ion-content class="padding has-header components-demo" >
+    <span >
+      {{mapa.msg}}
+    </span>
+    <div id="map" data-tap-disabled="true"  ></div>
+
+  </ion-content>
+
+  <ion-footer-bar ng-class="tema"  >
+    <div id="directions-panel" ></div>
+  </ion-footer-bar>
+
+</ion-modal-view>

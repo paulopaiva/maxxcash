@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "870468834828",
+    "firebase_url": "https://pushaplicacaopolitico.firebaseio.com",
+    "project_id": "pushaplicacaopolitico",
+    "storage_bucket": "pushaplicacaopolitico.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870468834828:android:94616eb700a593f6",
+        "android_client_info": {
+          "package_name": "com.exata.social"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870468834828-gm9tp0tbq4ubsbrbs87lg3fit9pcfkpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7PkxjbMB3W7tf7MyyDvZ4DuzA2_ail9A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

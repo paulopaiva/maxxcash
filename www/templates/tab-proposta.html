@@ -1,0 +1,28 @@
+<ion-view view-title="<h6 class='title_bar2'>Projetos & Propostas</h6>">
+  <ion-content>
+     
+<div  class="list card" ng-repeat="pega in listaProposta" cache-view="false">
+
+ <div class="item item-body">
+    <a href="{{pega.link}}">
+      <img class="full-image" src="{{pega.link_imagem}}" ng-show="{{pega.link_imagem}}" >
+    </a> 
+
+    <h2>{{pega.titulo}}</h2>
+    <p style="color:darkgray">{{pega.data | date:'medium3' }} </p>
+    <p style="color:black">{{pega.descricao}}</p>   
+  
+</div>
+    <div class="item item-divider social1" >
+
+      <a href="#"  class="subdued"  ng-click="compartilhaProposta(pega.titulo,pega.descricao,pega.link_imagem, pega.link, $index)"><i class="icon ion-android-share-alt social1" ng-class="pega.classe_compartilhar"> Compartilhar</i></a>
+
+        
+    </div> 
+</div>
+
+
+  </ion-content>
+</ion-view>
+
+s

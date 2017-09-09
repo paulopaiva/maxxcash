@@ -1,0 +1,58 @@
+<ion-modal-view>
+
+  <ion-header-bar  ng-class="tema">
+
+    <button class="button button-clear icon-left ion-ios-arrow-thin-left" ng-click="closemostraCupom()"></button>
+    <div class="h1 title">Cupom</div>
+  </ion-header-bar>
+
+
+  <ion-content>
+
+
+        <ion-card>
+          <div class="item item-image">
+             <img class="full-image" ng-src="{{lojista.foto}}">
+          </div>
+        </ion-card>
+
+       <div class="card">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label" style="font-size: 18px; font-weight: bold; color:black;">{{lojista.titulo}}</span>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label"  style="color:#8F28AF;">Endereço</span>
+          <span class="item-label" style="font-weight: bold; color:black;">{{lojista.endereco}}</span>
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label"  style="color:#8F28AF;">Telefone</span>
+          <span class="input-label" style="font-size: 18px; font-weight: bold; color:black;"> {{lojista.telefone}}</span>
+        </label>
+
+        <div class="item item-text-wrap" style="font-weight: bold; color:#FF5722;">
+          {{lojista.descricao}}
+        </div>
+
+
+          <div ng-if="lojista.desconto_valor > 0">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label"  style="font-size: 22px;font-weight: bold; color:#8F28AF;">Takeback</span>
+              <span class="item-label" style="font-size: 22px; font-weight: bold; color:#FF5722;" >R${{lojista.desconto_valor}}</span>
+            </label>
+          </div>
+          <div ng-if="lojista.desconto_percentual > 0">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label"  style="font-size: 22px; font-weight: bold; color:#8F28AF;">Takeback</span>
+            <span class="item-label" style="font-size: 22px; font-weight: bold; color:#FF5722;" >{{lojista.desconto_percentual}}%</span>
+           </label>
+          </div>
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label"  style="font-size: 22px; font-weight: bold; color:#8F28AF;">Cupom</span>
+          <span class="item-label" style="font-size: 22px; font-weight: bold; color:#FF5722;" >{{lojista.numero_cupom}}</span>
+        </label>
+
+  </ion-content>
+
+
+</ion-modal-view>

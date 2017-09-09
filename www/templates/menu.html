@@ -1,0 +1,57 @@
+
+<ion-tabs class="tabs-striped tabs-top bar_blue {{tab_tema}} menuTab " ng-controller="StatusCtrl">
+<!--
+<ion-tabs class="tabs-striped tabs-top bar_blue {{tab_tema}} menuTab " ng-controller="StatusCtrl">
+  <ion-tab title="classificado"  icon-off="ion-ios-paper" icon-on="ion-ios-paper"  href="#/tab/classificado" on-select="pegaClassificado()">
+       <ion-nav-view name="tab-classificado"></ion-nav-view>
+    </ion-tab>
+
+-->
+
+   <ion-tab title="CashBack" icon-off="ion-social-usd" icon-on="ion-social-usd"  href="#/tab/cashback"  on-select="pegacashback()">
+    <ion-nav-view name="tab-cashback"></ion-nav-view>
+   </ion-tab>
+   <ion-tab title="Promoções" icon-off="ion-pricetags" icon-on="ion-pricetags" href="#/tab/desconto" on-select="pegaDesconto()" >
+     <ion-nav-view name="tab-desconto"></ion-nav-view>
+   </ion-tab>
+<!--
+  <ion-tab title="Mapa" icon-off="ion-happy" icon-on="ion-happy" href="#/tab/mapa" on-select="carregaMapa()" >
+    <ion-nav-view name="tab-mapa"></ion-nav-view>
+  </ion-tab>
+   <ion-tab title="Ponto" icon-off="ion-loop" icon-on="ion-loop" href="#/tab/ponto" on-select="carregaPonto()" >
+     <ion-nav-view name="tab-ponto"></ion-nav-view>
+   </ion-tab>
+-->
+  <!--
+  <ion-tab title="Agendamento" icon-off="ion-ios-paper" icon-on="ion-ios-paper" href="#/tab/agendamento" on-select="pegaAgendamento()">
+    <ion-nav-view name="tab-agendamento"></ion-nav-view>
+  </ion-tab>
+-->
+	<!--
+  <ion-content class="padding">
+  <ion-slide-box on-slide-changed="slideHasChanged($index)">
+  <ion-slide>
+    <div class="box blue"><h1>BLUE</h1></div>
+  </ion-slide>
+  <ion-slide>
+    <div class="box yellow"><h1>YELLOW</h1></div>
+  </ion-slide>
+  <ion-slide>
+    <div class="box pink"><h1>PINK</h1></div>
+  </ion-slide>
+
+  <a class="tab-item">
+    <i class="icon ion-home"></i>
+    Home
+  </a>
+  <a class="tab-item">
+    <i class="icon ion-star"></i>
+    Favorites
+  </a>
+  <a class="tab-item">
+    <i class="icon ion-gear-a"></i>
+    Settings
+  </a>
+  </ion-slide-box>
+-->
+</ion-tabs>

@@ -1,0 +1,30 @@
+<ion-view view-title="<h6 class='title_bar2'>Cursos online</h6>">
+  <ion-content>
+ <div class="bar bar-header item-input-inset">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="Pesquisa" ng-model="criterioDeBusca">
+  </label>
+</div>     
+<div  class="list" ng-repeat="pega in listaCursoOnline | filter:criterioDeBusca" cache-view="false">
+
+
+    <a class="item item-thumbnail-left item-text-wrap" href="{{pega.link}}">
+      <img src="{{pega.link_imagem}}" >
+      <h2>{{pega.titulo}}</h2>
+      <p style="color:darkgray">{{pega.data | date:'medium' }} </p>
+      <p>{{pega.descricao}}</p>
+    </a>
+
+</div>
+<button class="button button-block button-assertive" ng-show="btn">
+  Sem novos resultados
+</button>
+  <ion-infinite-scroll
+    on-infinite="paginacaoCursoOnline()"
+    distance="1%">
+  </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,85 @@
+<ion-modal-view>
+  <ion-header-bar  ng-class="tema">
+
+    <div class="buttons">
+      <button class="button icon-left ion-ios-arrow-thin-left button-clear " ng-click="closemenu_coleta()"></button>
+    </div>
+	    <p class="title_bar" ng-click="closemenu_coleta()">Voltar</p>
+  </ion-header-bar>
+  <ion-content>
+
+
+   <!-- msg texto  ***************************************************************     -->
+  <div  >
+   <div class="list">
+
+        <img ng-src="{{foto}}" class="foto-perfil" ng-model="msgfoto.foto">
+        <progress max="100" value="{{currentPercentage}}"></progress>
+
+
+    <div style="color: red">
+
+      <label class="item item-input item-select" >
+        <div class="input-label"><i class="icon ion-help-circled"></i></div>
+        <select ng-model="msgfoto.tipo" name="fototipo"ng-required="true">
+         <option value="">Patio de Retenção</option>
+         <option>Patio Retenção Área 1</option>
+         <option>Patio Retenção Área 2</option>
+         <option>Patio Retenção Área 3</option>
+        </select>
+      </label>
+
+     </div>
+     <form name="textoForm">
+
+       <div class="list">
+<!--
+         <label class="item item-input item-stacked-label">
+           <span class="input-label">Estabelecimento</span>
+           <input type="text" placeholder="" readonly="true" ng-model="estabelecimento">
+         </label>
+         <label class="item item-input item-stacked-label">
+           <span class="input-label">Coletor</span>
+           <input type="text" placeholder="" readonly="true" ng-model="coletor">
+         </label>
+         <label class="item item-input item-stacked-label">
+           <span class="input-label">Data / Hora</span>
+           <input type="text" placeholder="" readonly="true" ng-model="data">
+         </label>
+       -->
+         <label class="item item-input item-stacked-label">
+           <span class="input-label">Placa do Veículo</span>
+           <input type="text" placeholder="Digite aqui placa do veívulo..." ng-model="msg.quantidade" name="quantidade" ng-required="true">
+         </label>
+         <label class="item item-input item-stacked-label">
+            <span class="input-label">Observação</span>
+           <input type="text" placeholder="Digite aqui uma observação..." ng-maxlength="1000" ng-model="msg.obs" >
+        </label>
+        <label class="item item-input">
+           <i class="icon ion-location placeholder-icon" ></i>
+           <input type="text" ng-click="pegaLocal()" name="localizacao" readonly placeholder="Ligue o GPS e Ckick aqui!" ng-model="localizacao" ng-required="true">
+        </label>
+
+       </div>
+
+     </form>
+    </div>
+     <div class="button-bar">
+        <a class="button button-block {{btn_tema}} ion-upload" ng-disabled="textoForm.$invalid"  ng-click="enviarFoto(msgfoto)"> Enviar agora!</a>
+        <a class="button button-block {{btn_tema}} ion-android-camera" ng-click="carregarFoto(1)"> Foto</a>
+    </div>
+
+    </div>
+    </div>
+    <!-- fim -->
+
+  </ion-content>
+
+
+  <!-- botoes de selecao
+   <div ng-include="'opc-botao.html'"></div>
+
+   -->
+
+
+</ion-modal-view>

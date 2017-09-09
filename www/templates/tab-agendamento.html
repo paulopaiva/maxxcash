@@ -1,0 +1,64 @@
+<ion-view  view-title="<h6 class='title_bar2'>Agendamento</h6>" >
+<ion-content class="padding has-header components-demo" >
+  <ion-refresher
+    pulling-text="Refresh..."
+    on-refresh="pegaAgendamento()">
+  </ion-refresher>
+
+
+ <div class="bar bar-header item-input-inset">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="Pesquisa" ng-model="criterioDeBusca">
+  </label>
+</div>
+<div  class="list card" ng-repeat="pega in listaAgendamento | filter:criterioDeBusca" cache-view="false">
+
+
+  <div class="item ">
+
+    <h2>Solicitante: {{pega.nome}}</h2>
+    <p style="color:darkgray">Data da solicitação: {{pega.data_hora | date:'medium' }} </p>
+    
+	  
+  </div>
+  <div class="item item-body">
+    <h3  style="color:green">{{pega.assunto | uppercase}}</h3>
+ <!--   <h3 style="color:darkgray"><i class="icon ion-location" style="color:black"></i> {{pega.localizacao}} - {{pega.endereco}}</h3> -->
+    <p style="color:black">{{pega.descricao}}</p> 
+ 
+
+ </div>
+  <p style="color:blue" ng-show="{{pega.retorno}}">Data do Agendamento: {{pega.data_agendamento| date:'medium3' }} </p>
+  <h6 style="color:blue">{{pega.retorno}}</h6> 
+<!-- <img class="full-image" src="images/play-in.png" ng-click="mostraVideo($index)" ng-show="{{pega.video}}"> -->
+<!--   <video id="VideoPlay" controls loop ng-show="{{pega.video}}"><source src="{{pega.video}}" type="video/mp4"/></video>
+   <a id="play" class="button button-block {{btn_tema}}" ng-click="videoplay()" ng-show="{{pega.video}}"> Play</a>  -->
+ <!--
+  <h6 style="color:gray"> <i class="icon ion-location placeholder-icon"></i>{{pega.localizacao}}</h6>
+  <h6 style="color:blue"> Protocolo: {{pega.protocolo}}</h6> 
+  --> 
+ 
+</div>
+
+<button class="button button-block button-assertive" ng-show="btn">
+  Sem novos resultados
+</button>
+
+<!--
+  <ion-infinite-scroll
+    on-infinite="paginacao()"
+    distance="1%">
+  </ion-infinite-scroll>
+-->  
+</ion-content>
+    <button fab danger fab-top fab-right>
+      <ion-icon name='mic' is-active="false"></ion-icon>
+    </button>
+
+
+<!--<button ng-click="pegaStatus()"  class="refData"><i class="refData ion-refresh"></i></button>-->
+<button ng-click="cad_agendamento()"  class="add"><i class="add ion-plus-round"></i></button>
+
+
+</ion-view>

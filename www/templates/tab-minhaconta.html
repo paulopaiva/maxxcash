@@ -1,0 +1,94 @@
+<ion-modal-view >
+
+  <ion-header-bar  ng-class="tema">
+
+    <button class="button button-clear icon-left ion-ios-arrow-thin-left" ng-click="close_minhaconta()"></button>
+    <div class="h1 title">Minha Conta</div>
+    <button class="button button-clear ion-edit" ng-click="usuario()"></button>
+  </ion-header-bar>
+
+  <ion-content class="fundo">
+
+
+    <!--
+       <img ng-src="{{usuario.foto_perfil}}" class="foto-avatar" ng-click="mostraFoto(usuario.foto_perfil,'Perfil')" ng-model="usuario.foto_perfil" ng-click="carregarFotoPerfil()" >
+-->
+
+
+
+     <div class="list">
+       <label class="item item-input item-stacked-label">
+         <img ng-src="{{usuario.foto_perfil}}" class="foto-perfil"  ng-model="usuario.foto_perfil">
+       </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Nome</span>
+      </br>
+        <span  style="font-size: 15px; font-weight: bold; color:black;">{{usuario.nome}}</span>
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">E-mail </span>
+        </br>
+        <span  style="font-size: 15px; font-weight: bold; color:black;">{{usuario.email}}</span>
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Telefone </span>
+        </br>
+        <span  style="font-size: 15px; font-weight: bold; color:black;">{{usuario.telefone}}</span>
+      </label>
+      <!--
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Senha</span>
+        <input type="password"  name="senha" ng-model="usuario.senha" ng-required="true">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Repita a Senha</span>
+        <input type="password"  name="senha2" ng-model="usuario.senha2" ng-required="true">
+      </label>
+    -->
+
+     </div>
+     <button class="button button-full button-royal" ng-click="meusanuncios()">
+       <i class="ion-ios-paper"></i> Meus Anúcios
+     </button>
+     <button class="button button-full button-energized">
+       <i class="ion-ios-cart"></i> Meus Cupons CashBack
+     </button>
+
+     <button class="button button-full button-positive">
+       <i class="ion-happy"></i> Meus Cupons de Desconto
+     </button>
+ <!--
+      <a class="button button-block {{btn_tema}} ion-android-camera" ng-disabled="!{{idusuario}}" ng-click="perfilPopup()"> Selecione Foto</a>
+    </div>
+   -->
+
+  <!--
+      </label>
+        <label class="item item-input">
+        <input type="text" placeholder="Telefone... 9999-9999" name="telefone" ng-model="telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/">
+      </label>
+    <div ng-messages="msgForm.descricao.$error">
+      <div ng-message="required">
+        por favor preencha os dados
+      </div>
+      <div ng-message="minlength">
+        por favor preencha no mínimo 10 caracteres
+      </div>
+    </div>
+
+
+    <div ng-show="msgForm.endereco.$invalid && msgForm.endereco.$dirty">
+      por favor preencha os dados
+    </div>
+    <div ng-show="msgForm.telefone.$error.pattern">
+      por favor preencha os dados do telefone corretamente Ex: 9999-9999
+    </div>
+
+-->
+
+  </ion-content>
+</ion-modal-view>

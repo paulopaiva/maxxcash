@@ -1,0 +1,23 @@
+<ion-view view-title="<h6 class='title_bar2'>Localização</h6>">
+<!--
+ <ion-header-bar class="bar bar-header {{tema}}">
+  <h1 class="title">bar-royal</h1>
+  <ion-nav-buttons side="right">
+	<button class="button button-clear icon ion-android-more-vertical" ng-click="help()" ></button>
+  </ion-nav-buttons>
+ </ion-header-bar>
+ -->
+
+
+    <ion-content>
+        <div id="map" data-tap-disabled="true"></div>
+
+    </ion-content>
+
+	  <ion-footer-bar class="bar bar-footer "  >
+        <label id = "endereco" style="color:blue" >{{mapa.endereco}}</label>
+        <label id = "distancia" style="color:blue">{{mapa.distancia}}</label>
+        <label id = "tempo" style="color:blue">{{mapa.tempo}}</label>
+    </ion-footer-bar>
+
+</ion-view>

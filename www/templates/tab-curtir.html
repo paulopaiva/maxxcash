@@ -1,0 +1,21 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header {{tema}}">
+    <h1 class="title">Curtidas  #{{qtdCurtir}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closepegaCurtir()">Fechar</button>
+
+    </div>
+  </ion-header-bar>
+  <ion-content >
+
+<!--    <div class="item" ng-repeat="pega in listaCurtir" ng-model="listagem"> -->
+     <a class="item item-avatar" href="#" ng-repeat="pega in listaCurtir" >
+        <img src="{{pega.perfil}}" ng-click="mostraFoto(pega.perfil,pega.nome)">
+        <h2>{{pega.nome}}</h2>
+        <p>{{pega.data | date:'medium' }}</p>
+     </a>
+ 
+</ion-content>
+</ion-view>
+
+</ion-modal-view>

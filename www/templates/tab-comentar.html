@@ -1,0 +1,55 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header {{tema}}">
+    <h1 class="title">Comentários</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeComentar()">Fechar</button>
+
+    </div>
+  </ion-header-bar>
+  <ion-content >
+  <!-- incio -->
+  <img class="full-image" src="{{foto}}" ng-show="!{{foto}}">
+  <img class="full-image" src="images/play-in.png" ng-click="mostraVideo($index)" ng-show="{{video}}"> 
+<!--   <video id="VideoPlay" controls loop ng-show="{{pega.video}}"><source src="{{pega.video}}" type="video/mp4"/></video>
+   <a id="play" class="button button-block {{btn_tema}}" ng-click="videoplay()" ng-show="{{pega.video}}"> Play</a>  -->
+
+  <div class="item item-body">
+
+    <h3  style="color:green">{{assunto | uppercase}}</h3>
+    <h3 style="color:darkgray"><i class="icon ion-location" style="color:black"></i> {{endereco}}</h3>
+    <p style="color:black">{{descricao}}</p> 
+ 
+     
+    <a ng-click="pegaCurtir(idmensagem,curtir)"><label class="social2">{{curtir}} Curtidas</label></a>
+    <label class="social2">{{comentario}} Cometários</label>
+    <label class="social2">{{compartilhamento}} Compartilhamentos</label>
+    <p  style="color:darkgray">{{data_hora | date:'medium' }} </p>
+  
+ 
+ 
+  </div>
+
+  <!--   fim -->
+
+    <a class="item item-avatar item-text-wrap" href="#" ng-repeat="pegaLista in listaComentario" >
+      <img src="{{pegaLista.perfil}}" ng-click="mostraFoto(pegaLista.perfil,pegaLista.nome)">
+      <h2 style="color:black">{{pegaLista.nome}}</h2>
+      <p style="color:darkgray">{{pegaLista.data | date:'medium' }} </p>
+      <p style="color:black">{{pegaLista.comentario}}</p>
+    </a>
+  </br></br>
+
+</ion-content>
+ <form name="form.formulario">
+ <div class="bar bar-footer item-input-inset ">
+  <label class="item-input-wrapper">
+      <textarea ng-model="form.formulario.comentario" placeholder="Escreva aqui seu comentário" class="item-input-wrapper" ng-required="true"></textarea>
+    </label>
+    <button class="button button-clear button-small" ng-click="gravaComentario(form.formulario)" ng-disabled="!form.formulario.comentario">
+      <i class="icon ion-checkmark-round" ></i>
+    </button>
+  </div>
+  </form>
+</ion-view>
+
+</ion-modal-view>

@@ -1,0 +1,45 @@
+
+<ion-view view-title="<h6 class='title_bar2'>Aulas Gravadas / Vídeos</h6>">
+  <ion-content >
+ <div class="bar bar-header item-input-inset">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="Pesquisa" ng-model="criterioDeBusca">
+  </label>
+
+</div>     
+
+
+<div aling="center" class="list card" ng-repeat="pega in listaVideo | filter:criterioDeBusca" cache-view="false" >
+
+<div class="item item-avatar">
+    <img src="{{pega.link_imagem}}" >
+
+    <h2>{{pega.titulo}}</h2>
+    <p style="color:darkgray">{{pega.data | date:'medium' }} </p>
+    <p>{{pega.descricao}}</p> 
+    
+  </div>
+ <!--   <a class="item item-thumbnail-left item-text-wrap"> -->
+  <div class="item item-body filter">
+
+    <video id="my-video"   class="fillWidth video-js" controls preload="auto"  data-setup="{}">
+     <source ng-src="" dynamic-url dynamic-url-src="{{pega.link}}" type='video/mp4'>
+
+
+ </video > 
+ </div>
+<script src="http://vjs.zencdn.net/5.10.4/video.js"></script>
+
+</div>
+<button class="button button-block button-assertive" ng-show="btn">
+  Sem novos resultados
+</button>
+  <ion-infinite-scroll
+    on-infinite="paginacaoVideo()"
+    distance="1%">
+  </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>
+

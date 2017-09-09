@@ -1,0 +1,17 @@
+<ion-view view-title="<h6 class='title_bar2'>Colaboradores</h6>">
+  <ion-content>
+     
+<div  class="list" ng-repeat="pega in listaEntreternimento" cache-view="false">
+
+
+    <a class="item item-thumbnail-left item-text-wrap" href="{{pega.link}}">
+      <img src="{{pega.link_imagem}}">
+      <h2>{{pega.titulo}}</h2>
+      <p>{{pega.descricao}}</p>
+    </a>
+
+</div>
+
+  </ion-content>
+</ion-view>
+
