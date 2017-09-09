@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    
+
 
     <title></title>
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -38,7 +38,8 @@
 
   </head>
 <body ng-app="starter">
-<div ng-controller="StatusCtrl">
+<!<div ng-controller="StatusCtrl">-->
+<div ng-controller="StatusCtrl">  
 <ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content >
     <ion-nav-bar class="bar bar-header {{tema}}">
@@ -94,24 +95,27 @@
       <ion-item menu-close  ng-href="http://www.sestsenat.org.br/unidade/belem" class="listar-item-clear" ng-controller="StatusCtrl" >
       <i class="ion-university"></i> Cursos e Treinamentos</ion-item>
       </ion-list>
-  -->
       <ion-item menu-close ng-click="redeCash()" class="listar-item-clear" ng-controller="StatusCtrl" >
       <i class="ion-social-usd"></i> Estabelecimentos</ion-item>
       </ion-list>
 
-      <ion-item menu-close ng-click="redeDesconto()" class="listar-item-clear" ng-controller="StatusCtrl" >
+      <ion-item menu-close ng-click="redeDesconto()" class="listar-item-clear" ng-controller="DescontoCtrl" >
       <i class="ion-pricetags"></i> Oferta do Dia</ion-item>
       </ion-list>
 
       <ion-item menu-close ng-click="tab_minhaconta()" class="listar-item-clear" ng-controller="StatusCtrl" >
       <i class="ion-person"></i> Minha Conta</ion-item>
       </ion-list>
+  -->
 
-      <ion-item menu-close ng-click="duvida()" class="listar-item-clear" ng-controller="StatusCtrl" >
+
+
+
+      <ion-item menu-close ng-click="duvida()" class="listar-item-clear"  >
       <i class="ion-speakerphone"></i> Fale Conosco</ion-item>
       </ion-list>
       <br>
-      <ion-item menu-close ng-click="duvida()" class="listar-item-clear" ng-controller="StatusCtrl" >
+      <ion-item menu-close ng-click="duvida()" class="listar-item-clear"  >
       <i class="ion-help-circled"></i> Dúvidas</ion-item>
       </ion-list>
       <ion-item menu-close ng-click="desenvolvedor()" class="listar-item-clear">

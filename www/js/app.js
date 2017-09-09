@@ -189,7 +189,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
     views: {
       'tab-desconto': {
         templateUrl: 'templates/tab-desconto.html',
-        controller: 'StatusCtrl'
+        controller: 'DescontoCtrl'
       }
     }
 })

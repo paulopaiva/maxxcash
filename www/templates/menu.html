@@ -1,5 +1,5 @@
 
-<ion-tabs class="tabs-striped tabs-top bar_blue {{tab_tema}} menuTab " ng-controller="StatusCtrl">
+<ion-tabs class="tabs-striped tabs-top bar_blue {{tab_tema}} menuTab " >
 <!--
 <ion-tabs class="tabs-striped tabs-top bar_blue {{tab_tema}} menuTab " ng-controller="StatusCtrl">
   <ion-tab title="classificado"  icon-off="ion-ios-paper" icon-on="ion-ios-paper"  href="#/tab/classificado" on-select="pegaClassificado()">
@@ -8,10 +8,10 @@
 
 -->
 
-   <ion-tab title="CashBack" icon-off="ion-social-usd" icon-on="ion-social-usd"  href="#/tab/cashback"  on-select="pegacashback()">
+   <ion-tab title="CashBack" icon-off="ion-social-usd" icon-on="ion-social-usd"  href="#/tab/cashback" ng-controller="cashbackCtrl"  on-select="pegacashback()">
     <ion-nav-view name="tab-cashback"></ion-nav-view>
    </ion-tab>
-   <ion-tab title="Promoções" icon-off="ion-pricetags" icon-on="ion-pricetags" href="#/tab/desconto" on-select="pegaDesconto()" >
+   <ion-tab title="Promoções" icon-off="ion-pricetags" icon-on="ion-pricetags" href="#/tab/desconto"  ng-controller="DescontoCtrl" on-select="pegaDesconto()" >
      <ion-nav-view name="tab-desconto"></ion-nav-view>
    </ion-tab>
 <!--
