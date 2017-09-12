@@ -171,7 +171,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       views: {
         'tab-mapa': {
           templateUrl: 'templates/tab-mapa.html',
-          controller: 'MapCtrl'
+          controller: 'MapaCtrl'
         }
       }
   })

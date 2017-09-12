@@ -1,0 +1,96 @@
+<ion-modal-view >
+    <ion-header-bar class="bar bar-header {{tema}}" >
+    <h1 class="title">Minha Conta</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-disabled="!usuario.idusuario" ng-click="closeUsuario()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="fundo">
+
+
+    <!--
+       <img ng-src="{{usuario.foto_perfil}}" class="foto-avatar" ng-click="mostraFoto(usuario.foto_perfil,'Perfil')" ng-model="usuario.foto_perfil" ng-click="carregarFotoPerfil()" >
+-->
+
+   <img ng-src="{{usuario.foto_perfil}}" class="foto-avatar" ng-click="cameraPopupPerfil()" ng-model="usuario.foto_perfil">
+   <progress max="100" value="{{currentPercentage}}"></progress>
+
+   <form name="usuarioForm">
+     <div class="card">
+
+    <div style="color: red">
+      <div ng-show="usuarioForm.cpf.$invalid && usuarioForm.cpf.$dirty">
+        <i class="icon ion-alert-circled"></i> CPF com 11 digitos...
+      </div>
+
+      <div ng-show="usuarioForm.cartao.$invalid && usuarioForm.cartao.$dirty">
+        <i class="icon ion-alert-circled"></i> Cartão com 17 digitos...
+      </div>
+
+      <div ng-show="usuarioForm.email.$invalid && usuarioForm.email.$dirty">
+        <i class="icon ion-alert-circled"></i> Digite um e-mail valido...
+      </div>
+
+      <div ng-show="usuarioForm.telefone.$invalid && usuarioForm.telefone.$dirty">
+        <i class="icon ion-alert-circled"></i> Telefone com o formato 99999999...
+      </div>
+
+      <div ng-show="usuarioForm.termo.$invalid && usuarioForm.termo.$dirty">
+        <i class="icon ion-alert-circled"></i> Confirme o termo de uso.
+      </div>
+
+    </div>
+
+
+
+      <!--
+      <div class="item item-divider">
+      </div>
+    -->
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">CPF</span>
+         <input type="number"   name="cpf" ng-model="usuario.cpf" ng-minlength="11" ng-required="true" >
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Número do Cartão</span>
+         <input type="number"   name="cartao" ng-model="usuario.cartao" ng-minlength="17" ng-required="true" >
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">E-mail </span>
+         <input style=" text-transform: lowercase;" type="email" placeholder="" name="email" ng-model="usuario.email" ng-minlength="10" ng-required="true" >
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Telefone *</span>
+         <input type="text" placeholder="Telefone...99999999" name="telefone" ng-model="usuario.telefone" ng-required="true" ng-pattern="/^\d{4,5}\d{4}$/">
+      </label>
+
+    </form>
+
+    <li class="item item-toggle">
+        <span class="input-label" style="font-size: 12px; font-weight: bold; color:red;">Aceito os termos de uso</span>
+      <label class="toggle toggle-assertive">
+        <input name="termo" ng-model="usuario.termo" type="checkbox" ng-required="true">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </li>
+
+    <ion-list class="listar-item" >
+       <ion-item menu-close class="listar-item-clear" style="color:blue" ng-href="http://www.portalexata.com.br/termo.html">
+         <i class="ion-ios-book" ></i>
+            Termo e condiçoes de uso.
+         </ion-item>
+     </ion-list>
+
+     </div>
+
+     <div class="button-bar">
+      <a class="button button-block {{btn_tema}} ion-upload" ng-disabled="usuarioForm.$invalid"  ng-click="verificaUsuario(usuario)"> Gravar</a>
+  </div>
+
+
+  </ion-content>
+</ion-modal-view>

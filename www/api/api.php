@@ -273,8 +273,14 @@ if($filter === 'POST'){
                                "lojista.idlojista ORDER BY desconto.titulo LIMIT {$data->pagina},99999");
                echo json_encode($read->getResult());
           break;
-
-
+      case "pegaTransacao":
+                $read = new Read;
+                //$read->ExeRead('user');
+                $read->FullRead("SELECT transacao.*,lojista.nome as razao, lojista.foto, lojista.localizacao, lojista.categoria,usuario.nome, usuario.idusuario FROM transacao ".
+                                " INNER JOIN lojista  ON transacao.idestabelecimento = lojista.idestabelecimento ".
+                                " INNER JOIN usuario  ON transacao.idcliente = usuario.idcliente WHERE usuario.idusuario = '{$data->idusuario}' ORDER BY transacao.data_hora DESC");
+                echo json_encode($read->getResult());
+       break;
        case "pegaStatusUsuario":
             $read = new Read;
             $read->FullRead("SELECT * FROM mensagem where (idusuario='{$data->idusuario}') ORDER BY idmensagem desc LIMIT {$data->pagina} ,30");

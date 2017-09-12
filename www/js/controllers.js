@@ -22,7 +22,6 @@ if (start==0) {
   }else {
     $scope.idusuario="";
   }
-
      start=1;
 }
 
@@ -34,6 +33,29 @@ document.addEventListener('deviceready',function(){ // inicia o aplicativo
         $cordovaStatusbar.style(2);
         $cordovaStatusbar.styleHex('#f5a80a');
         start2=1;
+
+        $scope.mapa={};
+        $scope.usuario={};
+        $scope.latitude="";
+        $scope.longitude="";
+        $scope.localizacao="";
+
+        $scope.img_fundo="url(ico/papel1.jpeg)";
+        $scope.tema="bar-royal";
+        $scope.tab_tema="tabs-background-royal tabs-color-light";
+        $scope.btn_tema="button-energized";
+        $scope.usuario.foto_perfil="images/foto.jpg";
+        //  $scope.btn_tema="background: #536DFE;color: #fff;";
+
+        if (localStorage.getItem('nome')!=null){
+        idUsuario= localStorage.getItem('idusuario');
+        $scope.idusuario=idUsuario;
+        }else {
+        $scope.idusuario="";
+        }
+         start=1;
+
+
         // carregar as paginas de templates aki
         //===========================================================================================
         $ionicModal.fromTemplateUrl('templates/tab-minhaconta.html', {
@@ -62,6 +84,23 @@ document.addEventListener('deviceready',function(){ // inicia o aplicativo
 
 
         // modal
+        $ionicModal.fromTemplateUrl('templates/tab-cad-usuario.html', {
+            scope: $scope
+          }).then(function(modalcadusuario) {
+            $scope.modalcadusuario = modalcadusuario;
+        });
+
+        $scope.closeCadUsuario = function() {
+            $scope.modalcadusuario.hide();
+        };
+
+
+        $scope.cadUsuario = function() {
+           $scope.pegaLocal();
+           $scope.modalcadusuario.show();
+        };
+
+
         $ionicModal.fromTemplateUrl('templates/tab-usuario.html', {
             scope: $scope
           }).then(function(modal) {
@@ -150,36 +189,73 @@ document.addEventListener('deviceready',function(){ // inicia o aplicativo
            $scope.modaldesenvolvedor.show();
         };
 
+        $ionicModal.fromTemplateUrl('templates/tab-conta.html', {
+            scope: $scope
+          }).then(function(conta) {
+            $scope.modalconta = conta;
+
+        });
+
+        $scope.closeConta = function() {
+            $scope.modalconta.hide();
+        };
+
+        $scope.conta = function() {
+
+           $scope.pegaTransacao();
+           $scope.modalconta.show();
+        };
+
+        // fim dos MODAL
 
 
 
-
-
-
-        // fim dos templates
-
-
-
-
+/*
         $scope.secao=sessionStorage.getItem('secao');
         if ($scope.secao==null){
-    //      alert('2.1')
+
            sessionStorage.setItem('secao',true);
            idUsuario=localStorage.getItem('idusuario');
            $scope.idusuario=idUsuario;
 
         }
+
+
         if (!localStorage.getItem('nome')){
           localStorage.setItem('contador',1);
 
           $scope.usuario();
-
-
         }
+
+*/
+
     }
    }, false);
 
-
+$scope.pegaTransacao = function(){
+   var valores = {
+     parametros:'pegaTransacao',
+    //  idusuario:$scope.usuario.idusuario
+    idusuario:1,
+     pagina:0
+   }
+       $http({
+             method:'POST',
+             url: path+'api/api.php',
+             data: valores,
+             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+           }).success(function(data){
+             $scope.listaTransacao=[];
+             $scope.meuSaldo=0;
+             var soma=0.0;
+             for (var i = 0; i < data.length; i++) {
+                 data[i].data_hora=new Date(data[i].data_hora);
+                 $scope.listaTransacao.push(angular.copy(data[i]));
+                 soma+=parseFloat(data[i].valor_cashback);
+            };
+            $scope.meuSaldo=soma.toString();
+           });
+   };
 
 
 $scope.verificaNet = function(){
@@ -506,13 +582,6 @@ $scope.carregarFotoPerfil = function(opc){
 
 .controller('cashbackCtrl', function($scope,   $cordovaCapture, $cordovaStatusbar,  $state, $cordovaNetwork,  $cordovaGeolocation, $cordovaToast, $http, Conexao, $cordovaContacts, $cordovaSocialSharing, $ionicModal, $cordovaCamera, $ionicLoading, $cordovaFileTransfer,  $timeout, $ionicPopup)  {
 
-document.addEventListener('deviceready',function(){ // inicia o aplicativo
-
-
-
-   }, false);
-
-
 $scope.verificaNet = function(){
 
   var type = $cordovaNetwork.getNetwork()
@@ -557,10 +626,9 @@ var valores = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data){
           $scope.listaCash = data;
-          console.log(data);
+
         });
 };
-
 
 
 $scope.pegaLocal = function(){
@@ -675,7 +743,6 @@ $scope.carregaMapa = function(mylatitude, mylongitude) {
       var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       var directionsService = new google.maps.DirectionsService();
       var info = new google.maps.InfoWindow({maxWidth:200});
-
       var mapOptions = {
         center: latLng,
         zoom: 12,
@@ -683,8 +750,7 @@ $scope.carregaMapa = function(mylatitude, mylongitude) {
       };
 
       var mymap = new google.maps.Map(document.getElementById("map"), mapOptions);
-      console.log(mymap);
-      console.log(document.getElementById("map"));
+
       var marker = new google.maps.Marker({
         position: latLng,
         title: 'Sua localização atual.',
@@ -702,6 +768,7 @@ $scope.carregaMapa = function(mylatitude, mylongitude) {
       travelMode: google.maps.DirectionsTravelMode.DRIVING
   };
   directionsService.route(request, function(response, status) {
+
       if (status == google.maps.DirectionsStatus.OK) {
         var route = response.routes[0];
         var summaryPanel = document.getElementById('directions-panel');
@@ -755,7 +822,7 @@ $ionicModal.fromTemplateUrl('templates/tab-localizacao.html', {
     $scope.mapalocalizacao = mapalocalizacao;
 });
 
-$scope.verlocalizacao = function(opc) {
+$scope.verlocalizacao = function() {
    $scope.carregaMapa($scope.cashback.latitude, $scope.cashback.longitude);
    $scope.mapalocalizacao.show();
 };
@@ -975,8 +1042,6 @@ $scope.tab_cashBack = function() {
         };
 
         var mymap = new google.maps.Map(document.getElementById("map"), mapOptions);
-        console.log(mymap);
-        console.log(document.getElementById("map"));
         var marker = new google.maps.Marker({
           position: latLng,
           title: 'Sua localização atual.',
@@ -986,7 +1051,6 @@ $scope.tab_cashBack = function() {
           animation: google.maps.Animation.DROP
         });
     marker.setMap(null);
-
     var directionsDisplay = new google.maps.DirectionsRenderer();
     var request = {
         origin: marker.position,
@@ -1042,7 +1106,7 @@ $scope.tab_cashBack = function() {
 
   $scope.closelocalizacao = function() {
       $scope.mapalocalizacaodesconto.hide();
-      $scope.mapalocalizacao.remove();
+
   };
 
 
@@ -1081,15 +1145,15 @@ $scope.tab_cashBack = function() {
 })
 
 
-.controller('MapCtrl', function($scope, $state, $http, $cordovaGeolocation, $ionicLoading) {
-//$scope.listaMap=[];
 
-// teste de funcao mapa
-alert ('mapa')
+.controller('MapaCtrl', function($scope,   $cordovaCapture, $cordovaStatusbar,  $state, $cordovaNetwork,  $cordovaGeolocation, $cordovaToast, $http, Conexao, $cordovaContacts, $cordovaSocialSharing, $ionicModal, $cordovaCamera, $ionicLoading, $cordovaFileTransfer,  $timeout, $ionicPopup)  {
+
+
+
 $scope.idmensagemMap="";
 $scope.qtdMensagemNova="Mapa de Mensagens...";
 $scope.carregaMapa = function() {
-//  alert ('mapa')
+  $scope.pegaLocal();
   $ionicLoading.show({template: 'Carregando...'});
 
   var options = {timeout: 10000, enableHighAccuracy: true};
@@ -1103,7 +1167,6 @@ $scope.carregaMapa = function() {
       zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-
 
 
     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -1120,9 +1183,8 @@ $scope.carregaMapa = function() {
 /// inicio do ajax
 
     var valores = {
-      parametros:'pegaStatusMapa',
-      pagina:0,
-      status:'Privada'
+      parametros:'pegaDesconto',
+      pagina:0
     }
 
     $http({
@@ -1135,13 +1197,9 @@ $scope.carregaMapa = function() {
 //         $scope.listaMap=[];
 
          for (var i = 0; i < data.length; i++) {
-              if (i==0){
-                      $scope.idmensagemMap=data[0].idmensagem;
-                      $scope.idmensagemMapAtual=data[0].idmensagem;
-
-                    }
 
               data[i].data_hora=new Date(data[i].data_hora);
+              /*
               if (data[i].assunto=="Saúde"){
                  var icone = 'ico/saude.png';
               }else if (data[i].assunto=="Outros Assuntos"){
@@ -1159,8 +1217,9 @@ $scope.carregaMapa = function() {
               }else if (data[i].assunto=="Meio Ambiente"){
                 var icone = 'ico/meio.png';
               };
+              */
   //           $scope.listaMap.push(angular.copy(data[i]));
-
+              var icone = 'ico/lojista.png';
               var marker = new google.maps.Marker({
                  position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
 //                 title: data[i].assunto + " - "+ data[i].descricao + "  - Enviada por: "+ data[i].nome + " / "+data[i].localizacao,
@@ -1172,12 +1231,14 @@ $scope.carregaMapa = function() {
 
  //                title: data[i].assunto + " - "+ data[i].descricao + "  - Enviada por: "+ data[i].nome + " / "+data[i].localizacao,
 
-                var contentString = '<div><h4>'+data[i].assunto +'</h4>'+
-                                    '<h4 style="color:blue"><p><b>'+ data[i].nome+'</b></p></h4>'+
-                                    '<h5><p><b>'+ data[i].descricao +'</b></p></h5>'+
-                                    '<h5><p><b>'+ data[i].localizacao +'</b></p></h5>'+
-                                    '<h5><p><b>'+ data[i].endereco +'</b></p></h5></div>';
+                var contentString = '<div><h4>'+data[i].titulo +'</h4>'+
+                                    '<h4 style="color:blue"><p><b>'+ data[i].descricao+'</b></p></h4>'+
+                                    '<h5><p><b>R$'+ data[i].valor_desconto+'</b></p></h5>'+
+                                    '<h5><p><b>'+  data[i].localizacao +'</b></p></h5>'+
+                                    '<div class="item item-image"><img src="'+data[i].foto+'" style ="height:300; width:300" ></div></div>';
+
               $scope.attachSecretMessage(marker, contentString);
+
 
       };//fim do laco
 
@@ -1194,209 +1255,58 @@ $scope.carregaMapa = function() {
  $ionicLoading.hide();
 
 };// da funcao
-$scope.carregaMapa();
-
-
-
-
-// funcao carrega pontos
-$scope.carregaPonto = function() {
-
-  $ionicLoading.show({template: 'Carregando...'});
-//  alert ('ponto')
-  var options = {timeout: 10000, enableHighAccuracy: true};
-
-  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
-
-    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-    var mapOptions = {
-      center: latLng,
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-
-
-    $scope.map = new google.maps.Map(document.getElementById("ponto"), mapOptions);
-
-    var marker = new google.maps.Marker({
-      position: latLng,
-      title: 'Sua localização atual!',
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      icon: 'ico/usuario.png',
-      map: $scope.map,
-      animation: google.maps.Animation.DROP
-    });
-
-/// inicio do ajax
-
-    var valores = {
-      parametros:'pegaStatusMapaPonto'
-
-    }
-
-    $http({
-          method:'POST',
-          url: path+'api/api.php',
-          data: valores,
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data){
-
-//         $scope.listaMap=[];
-
-         for (var i = 0; i < data.length; i++) {
-              if (i==0){
-                      $scope.idmensagemMap=data[0].idusuario;
-                      $scope.idmensagemMapAtual=data[0].idusuario;
-
-                    }
-
-              data[i].data_hora=new Date(data[i].data_hora);
-              if (data[i].tipo_material=="Bateria"){
-                 var icone = 'ico/saude.png';
-              }else if (data[i].tipo_material=="Papelao"){
-                var icone = 'ico/meio.png';
-              };
-  //           $scope.listaMap.push(angular.copy(data[i]));
-
-              var marker = new google.maps.Marker({
-                 position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
-//                 title: data[i].assunto + " - "+ data[i].descricao + "  - Enviada por: "+ data[i].nome + " / "+data[i].localizacao,
-                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                 icon: icone,
-                 map: $scope.map,
-                 animation: google.maps.Animation.DROP
-                });
-
- //                title: data[i].assunto + " - "+ data[i].descricao + "  - Enviada por: "+ data[i].nome + " / "+data[i].localizacao,
-
-                var contentString = '<div><h4>'+data[i].nome +'</h4>'+
-                                    '<h4 style="color:blue"><p><b>'+ data[i].referencia+'</b></p></h4>'+
-                                    '<h5><p><b>'+ data[i].tipo_material +'</b></p></h5>'+
-                                    '<h5><p><b>'+ data[i].localizacao +'</b></p></h5>'+
-                                    '<h5><p><b>'+ data[i].endereco +'</b></p></h5></div>';
-              $scope.attachSecretMessage2(marker, contentString);
-
-      };//fim do laco
-
-
-
-
-  }); // fim do ajax
-
-  }, function(error){
-   $ionicLoading.hide();
-//    alert("Por favor, ligue a localizacão do seu celular.");
-  });
-
- $ionicLoading.hide();
-
-};// da funcao
-
-
-$scope.carregaPonto();
-
-
-
-
-
-
-
-$scope.paginaMap= function(){
-  /// inicio do ajax
-
-
-    var valores = {
-      parametros:'paginaStatusMapa',
-      idmensagem: $scope.idmensagemMapAtual,
-      status:'Privada'
-    }
-
-    $http({
-          method:'POST',
-          url: path+'api/api.php',
-          data: valores,
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data){
-
-
-
-         for (var i = 0; i < data.length; i++) {
-              if (i==0){
-                      $scope.qtdMensagemNova="Novas Mensagens  #"+(data[0].idmensagem-$scope.idmensagemMap);
-                      $scope.idmensagemMapAtual=data[0].idmensagem;
-                  }
-              data[i].data_hora=new Date(data[i].data_hora);
-
-              if (data[i].assunto=="Saúde"){
-                 var icone = 'ico/saude_novo.png';
-              }else if (data[i].assunto=="Outros"){
-                var icone = 'ico/outros_novo.png';
-              }else if (data[i].assunto=="Educação"){
-                var icone = 'ico/educacao_novo.png';
-              }else if (data[i].assunto=="Transporte"){
-                var icone = 'ico/transporte_novo.png';
-              }else if (data[i].assunto=="Segurança"){
-                var icone = 'ico/seguranca_novo.png';
-              }else if (data[i].assunto=="Saneamento Básico"){
-                var icone = 'ico/saneamento_novo.png';
-              }else if (data[i].assunto=="Iluminação Pública"){
-                var icone = 'ico/iluminacao_novo.png';
-              }else if (data[i].assunto=="Meaio Ambiente"){
-                var icone = 'ico/meio_novo.png';
-              };
-// adiciona a lista
-    //         $scope.listaMap.push(angular.copy(data[i]));
-
-              var marker = new google.maps.Marker({
-                 position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
-//                 title: data[i].assunto + " - "+ data[i].descricao + "  - Enviada por: "+ data[i].nome + " / "+data[i].localizacao,
-                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                 icon: icone,
-                 map: $scope.map,
-                 animation: google.maps.Animation.DROP
-                });
-
- //                title: data[i].assunto + " - "+ data[i].descricao + "  - Enviada por: "+ data[i].nome + " / "+data[i].localizacao,
-
-                var contentString = '<div><h4>'+data[i].assunto +'</h4>'+
-                                    '<h4 style="color:blue"><p><b>'+ data[i].nome+'</b></p></h4>'+
-                                    '<h5><p><b>'+ data[i].descricao +'</b></p></h5>'+
-                                    '<h5><p><b>'+ data[i].localizacao +'</b></p></h5>'+
-                                    '<h5><p><b>'+ data[i].endereco +'</b></p></h5></div>';
-              $scope.attachSecretMessage(marker, contentString);
-
-      };//fim do laco
-
-
-
-
-  });
-}
 
 // incio
 $scope.attachSecretMessage = function(marker, secretMessage) {
   var infowindow = new google.maps.InfoWindow({
     content: secretMessage
-});
-google.maps.event.addListener(marker,'click', function() {
+   });
+  google.maps.event.addListener(marker,'click', function() {
          infowindow.open(marker.get('map'), marker);
 
-});
+   });
 
 }
+$scope.pegaLocal = function(){
 
-$scope.attachSecretMessage2 = function(marker, secretMessage) {
-  var infowindow = new google.maps.InfoWindow({
-    content: secretMessage
-});
-google.maps.event.addListener(marker,'click', function() {
-         infowindow.open(marker.get('ponto'), marker);
+  var posOptions = {timeout: 10000, enableHighAccuracy: false};
+  $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+      $scope.latitude = position.coords.latitude;
+      $scope.longitude = position.coords.longitude;
 
-});
+      $http({
+          method:'POST',
+          url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+$scope.latitude+","+$scope.longitude,
+          datatype: 'jsonp',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+          }).success(function(data){
+             $scope.msgvideo.localizacao =data.results[0].formatted_address;
+             $scope.msgfoto.localizacao =data.results[0].formatted_address;
+             $scope.msgtexto.localizacao =data.results[0].formatted_address;
+             $scope.localizacao =data.results[0].formatted_address;
 
-}
+             $scope.endereco =data.results[0].formatted_address;
+             $scope.bairro=data.results[1].formatted_address;
+             $scope.usuario.localizacao =data.results[0].formatted_address;
+          //   console.log(data);
+             /**
+             $scope.cidade =
+             $scope.estado =
+             **/
+          }).error(function(data){
+
+             $scope.showAlert('Para continuar ative o Localizador do seu celular','Não foi possível pegar sua localização com o GPS.'); // error
+
+          });
+
+    }, function(err) {
+            $scope.showAlert('Para continuar ative o Localizador do seu celular','Não foi possível pegar sua localização com o GPS.'); // error
+    });
+
+};
+
+
+
 
 // fim
 
