@@ -31,7 +31,7 @@ document.addEventListener('deviceready',function(){ // inicia o aplicativo
 
     if (start2==0){
         $cordovaStatusbar.style(2);
-        $cordovaStatusbar.styleHex('#f5a80a');
+        $cordovaStatusbar.styleHex('#32CD32');
         start2=1;
 
         $scope.mapa={};
