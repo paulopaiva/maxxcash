@@ -3,7 +3,7 @@
 define('HOST', 'portalexata.com.br');
 define('USER', 'porta268_root');
 define('PASS', '314159');
-define('DBSA', 'porta268_jefferson');
+define('DBSA', 'porta268_banclub');
 
 function __autoload($Class){
 

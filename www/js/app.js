@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 
 //br.com.ics.socialmidia  - 16
-var path="http://cartaofelicidade.com.br/app/";
+var path="http://banclub.portalexata.com.br/app/";
 //var path="http://social.jl.portalexata.com.br/";
 //var path="http://cartaofelicidade.com.br/social.franca/";
 var idUsuario=null;
